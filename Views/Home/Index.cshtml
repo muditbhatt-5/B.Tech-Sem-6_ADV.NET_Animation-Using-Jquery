@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Animation Examples</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: #3498db;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: #e74c3c;
+            border-radius: 50%;
+        }
+
+        .text {
+            font-size: 18px;
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Animation Using Jquery</h1>
+
+    <!-- Example Elements -->
+    <div class="box" id="box1">Box 1</div>
+    <div class="box circle" id="box2">Circle</div>
+    <p class="text" id="text1">Hello, this is animated text!</p>
+    <button id="startAnimations">Start Animations</button>
+
+    <script>
+        $(document).ready(function () {
+            $("#startAnimations").click(function () {
+                // Animation 1: Fade In and Fade Out
+                $("#box1").fadeOut(1000).fadeIn(1000);
+
+                // Animation 2: Slide Up and Slide Down
+                $("#box2").slideUp(1000).slideDown(1000);
+
+                // Animation 3: Toggle Visibility
+                $("#text1").toggle(1000);
+
+                // Animation 4: Grow Height and Width
+                $("#box1").animate({ width: "200px", height: "200px" }, 1000).animate({ width: "100px", height: "100px" }, 1000);
+
+                // Animation 5: Change Background Color
+                $("#box2").animate({ backgroundColor: "#8e44ad" }, 1000);
+
+                // Animation 6: Rotate Element
+                $("#box2").css({ transform: "rotate(0deg)" }).animate({ borderSpacing: 360 }, {
+                    step: function (now) {
+                        $(this).css('transform', 'rotate(' + now + 'deg)');
+                    },
+                    duration: 2000
+                });
+
+                // Animation 7: Bounce Effect
+                $("#box1").animate({ top: "-=50px" }, 300).animate({ top: "+=50px" }, 300);
+
+                // Animation 8: Opacity Change
+                $("#text1").animate({ opacity: 0.5 }, 1000).animate({ opacity: 1 }, 1000);
+
+                // Animation 9: Move Element
+                $("#box2").animate({ marginLeft: "200px" }, 1000).animate({ marginLeft: "0px" }, 1000);
+
+                // Animation 10: Shake Effect
+                for (let i = 0; i < 3; i++) {
+                    $("#box1").animate({ marginLeft: "-=20px" }, 100).animate({ marginLeft: "+=40px" }, 100).animate({ marginLeft: "-=20px" }, 100);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
